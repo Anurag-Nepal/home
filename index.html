@@ -671,8 +671,9 @@
   <section id="contact">
     <h2>Contact Me</h2>
     <form id="contact-form" action="https://formsubmit.co/anuragnepal2062@gmail.com" method="POST" onsubmit="return validateForm()">
+      <input type="hidden" name="_captcha" value="false">
       <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="email" id="email" name="Email" placeholder="Your Email" required>
       <textarea id="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
