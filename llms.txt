@@ -16,12 +16,12 @@
 
 ## Tech stack
 
-Java, Spring Boot, Spring Security, Spring Data JPA, Hibernate, Spring AI, Apache Kafka, Redis, MySQL, PostgreSQL, Docker, microservices, REST APIs, JWT authentication.
+Java, Spring Boot, Spring Security, Spring Cloud, Spring Data JPA, Hibernate, Spring AI, Apache Kafka, Netty, Keycloak, Redis, MySQL, PostgreSQL, Docker, microservices, REST APIs, JWT authentication.
 
 ## Projects
 
-- [PennyWise Nepal](https://github.com/Anurag-Nepal/PennyWiseNepal-RESTAPI): Finance tracker REST API with JWT authentication, email OTP verification, expense tracking and period over period reporting.
-- [ReadVault](https://github.com/Anurag-Nepal/ReadVault-OnlineBookStore): Online ebook store backend with JWT authentication, email verification, PayPal payments and automated ebook delivery.
+- [EverestMQ](https://github.com/Anurag-Nepal/EverestMQ): Message broker built from scratch in Java and Netty with a custom binary protocol, append only topic logs, crash recovery, long polling consumers and configurable acknowledgment policies.
+- [Event-Driven Microservices](https://github.com/Anurag-Nepal/Event-Driven-Microservices-with-Spring-Cloud-Gateway-and-Kafka): Microservices platform with Spring Cloud Gateway, Eureka, Keycloak OAuth2 and JWT, Redis rate limiting, Resilience4J circuit breakers and Kafka based asynchronous job processing.
 - [DishGenie](https://github.com/Anurag-Nepal/DishGenie-AI-receipe-Generator): AI recipe generator API built with Spring Boot and Spring AI, running Llama 2 locally in an Ollama Docker container.
 
 ## Blog
