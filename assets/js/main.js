@@ -119,19 +119,19 @@
     }
 
     var data = Object.fromEntries(new FormData(form).entries());
-    delete data._next;
+    delete data.redirect;
 
     setLoading(true);
     setStatus('');
 
-    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+    fetch(form.action, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(data)
     })
       .then(function (res) {
         return res.json().then(function (json) {
-          if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'Request failed');
+          if (!res.ok || json.success !== true) throw new Error(json.message || 'Request failed');
         });
       })
       .then(function () {
