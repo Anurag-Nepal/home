@@ -11,7 +11,8 @@
 
 - Backend and REST API development with Java and Spring Boot
 - Authentication and payment integration (Spring Security, JWT, email OTP, PayPal)
-- Microservices and event driven systems (Apache Kafka, Redis)
+- Microservices and event driven systems (Spring Cloud, Apache Kafka, Keycloak, Redis)
+- Messaging infrastructure and high performance networking (Netty, custom message brokers)
 - AI and LLM feature integration (Spring AI, Ollama, local LLMs)
 
 ## Tech stack
