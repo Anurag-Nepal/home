@@ -32,4 +32,7 @@ Java, Spring Boot, Spring Security, Spring Cloud, Spring Data JPA, Hibernate, Sp
 
 ## Hiring
 
-To hire Anurag Nepal for a Java or Spring Boot backend project, use the contact section at https://anuragnepal.com.np/#contact or email anuragnepal2062@gmail.com.
+- [Hire a freelance Spring Boot developer](https://anuragnepal.com.np/hire-spring-boot-developer/): What Anurag builds, how projects work (written plan, fixed quote per milestone, working demos), recent work and a hiring FAQ.
+- [FAQ](https://anuragnepal.com.np/#faq): Scope, pricing, timelines, code ownership and support after launch.
+
+To hire Anurag Nepal for a Java or Spring Boot backend project, use the form at https://anuragnepal.com.np/hire-spring-boot-developer/#contact or email anuragnepal2062@gmail.com.
