@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Blog: Spring Boot, Java and Backend Guides | Anurag Nepal</title>
+  <meta name="description" content="Practical Spring Boot and Java backend guides from real client projects: authentication, security, microservices, Kafka, Redis and AI with Spring AI.">
+  <meta name="author" content="Anurag Nepal">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://anuragnepal.com.np/blog/">
+  <meta name="theme-color" content="#07080c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anurag Nepal">
+  <meta property="og:url" content="https://anuragnepal.com.np/blog/">
+  <meta property="og:title" content="Blog: Spring Boot, Java and Backend Guides">
+  <meta property="og:description" content="Practical Spring Boot and Java backend guides from real projects.">
+  <meta property="og:image" content="https://anuragnepal.com.np/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog: Spring Boot, Java and Backend Guides">
+  <meta name="twitter:description" content="Practical Spring Boot and Java backend guides from real projects.">
+  <meta name="twitter:image" content="https://anuragnepal.com.np/og-image.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Anurag Nepal Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://anuragnepal.com.np/blog/#blog",
+        "url": "https://anuragnepal.com.np/blog/",
+        "name": "Anurag Nepal Blog",
+        "description": "Practical Spring Boot and Java backend guides from real projects.",
+        "inLanguage": "en",
+        "author": { "@type": "Person", "@id": "https://anuragnepal.com.np/#person", "name": "Anurag Nepal", "url": "https://anuragnepal.com.np/" },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Spring Boot JWT Authentication with Email OTP Verification",
+            "url": "https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/",
+            "datePublished": "2026-09-30"
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker",
+            "url": "https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/",
+            "datePublished": "2026-09-30"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://anuragnepal.com.np/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="Anurag Nepal, home">
+        <span class="brand-mark" aria-hidden="true">AN</span>
+        <span>Anurag Nepal</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li class="nav-cta"><a class="btn btn-sm" href="/#contact">Hire me</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="orb orb-1"></div>
+      </div>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><span aria-current="page">Blog</span></li>
+          </ol>
+        </nav>
+        <span class="eyebrow">Blog</span>
+        <h1 class="page-title">Notes from the backend.</h1>
+        <p class="section-sub">Practical guides on Spring Boot, Java, security and AI, written from real projects. No fluff, just code that works.</p>
+      </div>
+    </header>
+
+    <section class="section" aria-label="All articles">
+      <div class="container">
+        <div class="posts-grid stagger">
+          <article class="card post-card reveal">
+            <div class="post-meta">
+              <span class="tag">Spring Security</span>
+              <time datetime="2026-09-30">Sep 30, 2026</time>
+              <span>8 min read</span>
+            </div>
+            <h2 class="post-card-title"><a href="/blog/spring-boot-jwt-authentication-email-otp/">Spring Boot JWT Authentication with Email OTP Verification</a></h2>
+            <p>Build sign up, email verification and stateless login for a Spring Boot REST API, step by step, with Spring Security 6 and jjwt.</p>
+            <span class="link-arrow">Read article <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></span>
+          </article>
+          <article class="card post-card reveal">
+            <div class="post-meta">
+              <span class="tag">Spring AI</span>
+              <time datetime="2026-09-30">Sep 30, 2026</time>
+              <span>6 min read</span>
+            </div>
+            <h2 class="post-card-title"><a href="/blog/spring-ai-ollama-local-llm-docker/">Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker</a></h2>
+            <p>Add AI features to a Spring Boot app without paying per token: run a model locally with Ollama and call it through Spring AI.</p>
+            <span class="link-arrow">Read article <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></span>
+          </article>
+        </div>
+
+        <aside class="card card-static article-cta reveal">
+          <h2>Need a backend developer?</h2>
+          <p>I build secure, scalable Spring Boot backends for startups and businesses. Tell me about your project.</p>
+          <a class="btn btn-primary" href="/#contact">Start a project <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Anurag Nepal. Freelance Java &amp; Spring Boot developer.</p>
+      <ul class="footer-links">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+        <li><a href="https://github.com/Anurag-Nepal" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/anurag-nepal/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#top">Back to top</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

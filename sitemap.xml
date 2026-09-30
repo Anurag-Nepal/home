@@ -3,7 +3,17 @@
   <url>
     <loc>https://anuragnepal.com.np/</loc>
     <lastmod>2026-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://anuragnepal.com.np/blog/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/</loc>
+    <lastmod>2026-09-30</lastmod>
   </url>
 </urlset>

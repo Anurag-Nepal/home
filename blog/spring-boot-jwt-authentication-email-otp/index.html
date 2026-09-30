@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Spring Boot JWT Authentication with Email OTP | Anurag Nepal</title>
+  <meta name="description" content="Step by step JWT authentication in Spring Boot 3 with Spring Security 6, jjwt and email OTP verification. Full code for sign up, verify and login.">
+  <meta name="author" content="Anurag Nepal">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/">
+  <meta name="theme-color" content="#07080c">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Anurag Nepal">
+  <meta property="og:url" content="https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/">
+  <meta property="og:title" content="Spring Boot JWT Authentication with Email OTP Verification">
+  <meta property="og:description" content="Build sign up, email verification and stateless login for a Spring Boot REST API with Spring Security 6 and jjwt.">
+  <meta property="og:image" content="https://anuragnepal.com.np/assets/og/spring-boot-jwt-authentication-email-otp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-09-30T00:00:00+05:45">
+  <meta property="article:modified_time" content="2026-09-30T00:00:00+05:45">
+  <meta property="article:author" content="https://anuragnepal.com.np/">
+  <meta property="article:section" content="Spring Security">
+  <meta property="article:tag" content="Spring Boot">
+  <meta property="article:tag" content="JWT">
+  <meta property="article:tag" content="OTP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spring Boot JWT Authentication with Email OTP Verification">
+  <meta name="twitter:description" content="Build sign up, email verification and stateless login for a Spring Boot REST API.">
+  <meta name="twitter:image" content="https://anuragnepal.com.np/assets/og/spring-boot-jwt-authentication-email-otp.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Anurag Nepal Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/#article",
+        "headline": "Spring Boot JWT Authentication with Email OTP Verification",
+        "description": "Step by step guide to JWT authentication in Spring Boot 3 with Spring Security 6, jjwt and email OTP verification.",
+        "image": "https://anuragnepal.com.np/assets/og/spring-boot-jwt-authentication-email-otp.png",
+        "datePublished": "2026-09-30T00:00:00+05:45",
+        "dateModified": "2026-09-30T00:00:00+05:45",
+        "author": { "@type": "Person", "@id": "https://anuragnepal.com.np/#person", "name": "Anurag Nepal", "url": "https://anuragnepal.com.np/" },
+        "publisher": { "@id": "https://anuragnepal.com.np/#person" },
+        "mainEntityOfPage": "https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/",
+        "keywords": ["Spring Boot", "JWT", "Spring Security", "OTP", "email verification", "REST API"],
+        "articleSection": "Spring Security",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://anuragnepal.com.np/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://anuragnepal.com.np/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Spring Boot JWT Authentication with Email OTP Verification" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="Anurag Nepal, home">
+        <span class="brand-mark" aria-hidden="true">AN</span>
+        <span>Anurag Nepal</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li class="nav-cta"><a class="btn btn-sm" href="/#contact">Hire me</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="page-hero">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-grid"></div>
+          <div class="orb orb-1"></div>
+        </div>
+        <div class="container article-head">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><span aria-current="page">JWT with Email OTP</span></li>
+            </ol>
+          </nav>
+          <h1>Spring Boot JWT Authentication with Email OTP Verification</h1>
+          <p class="article-lede">A complete, working guide to sign up, email verification and stateless login for a Spring Boot REST API, using Spring Security 6 and jjwt.</p>
+          <div class="post-meta">
+            <span class="tag">Spring Security</span>
+            <span>By Anurag Nepal</span>
+            <time datetime="2026-09-30">Sep 30, 2026</time>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="container article-layout">
+        <div class="prose">
+          <p>Almost every product I build for clients needs the same thing on day one: users who can sign up, prove they own their email address, and then call a protected API from a web or mobile app. This is the setup I used in <a href="https://github.com/Anurag-Nepal/PennyWiseNepal-RESTAPI" target="_blank" rel="noopener">PennyWise Nepal</a>, a finance tracker API, cleaned up so you can drop it into your own project.</p>
+
+          <h2 id="overview">What we are building</h2>
+          <p>The flow has three endpoints:</p>
+          <ol>
+            <li><strong>POST /api/auth/register</strong> creates a disabled account and emails a 6 digit code.</li>
+            <li><strong>POST /api/auth/verify</strong> checks the code and enables the account.</li>
+            <li><strong>POST /api/auth/login</strong> checks the password and returns a signed JWT.</li>
+          </ol>
+          <p>Every other endpoint requires an <code>Authorization: Bearer &lt;token&gt;</code> header. The server keeps no session, so it scales horizontally without sticky sessions or a shared session store.</p>
+
+          <h2 id="setup">Project setup</h2>
+          <p>Start from a Spring Boot 3 project with <strong>Web, Security, Data JPA, Validation, Java Mail Sender</strong> and a database driver (PostgreSQL or MySQL). Then add jjwt for creating and parsing tokens:</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-api&lt;/artifactId&gt;
+    &lt;version&gt;0.12.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-impl&lt;/artifactId&gt;
+    &lt;version&gt;0.12.6&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-jackson&lt;/artifactId&gt;
+    &lt;version&gt;0.12.6&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+          <p>Keep secrets out of the code and read them from environment variables:</p>
+<pre><code class="language-yaml">app:
+  jwt:
+    secret: ${JWT_SECRET}      # Base64 encoded, at least 256 bits
+    expiration-ms: 3600000     # 1 hour
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true</code></pre>
+          <p>You can generate a strong secret with <code>openssl rand -base64 32</code>. For Gmail, use an app password rather than your real password.</p>
+
+          <h2 id="user-entity">The user entity</h2>
+          <p>A user starts disabled. We store a <em>hash</em> of the OTP, never the code itself, together with an expiry time.</p>
+<pre><code class="language-java">@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    private boolean enabled = false;
+
+    private String otpHash;
+
+    private Instant otpExpiresAt;
+
+    // getters and setters
+}
+
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {
+    Optional&lt;User&gt; findByEmail(String email);
+}</code></pre>
+
+          <h2 id="otp">Generating and emailing the OTP</h2>
+          <p>Use <code>SecureRandom</code>, not <code>Random</code>, so codes cannot be predicted. The code is hashed with the same <code>PasswordEncoder</code> we use for passwords and expires after 10 minutes.</p>
+<pre><code class="language-java">@Service
+public class OtpService {
+
+    private static final Duration OTP_TTL = Duration.ofMinutes(10);
+
+    private final SecureRandom random = new SecureRandom();
+    private final PasswordEncoder passwordEncoder;
+    private final JavaMailSender mailSender;
+
+    public OtpService(PasswordEncoder passwordEncoder, JavaMailSender mailSender) {
+        this.passwordEncoder = passwordEncoder;
+        this.mailSender = mailSender;
+    }
+
+    public void issueOtp(User user) {
+        String otp = String.format("%06d", random.nextInt(1_000_000));
+        user.setOtpHash(passwordEncoder.encode(otp));
+        user.setOtpExpiresAt(Instant.now().plus(OTP_TTL));
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(user.getEmail());
+        message.setSubject("Your verification code");
+        message.setText("Your code is " + otp + ". It expires in 10 minutes.");
+        mailSender.send(message);
+    }
+
+    public boolean isValid(User user, String otp) {
+        return user.getOtpHash() != null
+                &amp;&amp; user.getOtpExpiresAt().isAfter(Instant.now())
+                &amp;&amp; passwordEncoder.matches(otp, user.getOtpHash());
+    }
+}</code></pre>
+
+          <h2 id="jwt">Creating and validating JWTs</h2>
+          <p>jjwt 0.12 has a clean builder API. The token carries the user's email as its subject and is signed with an HMAC SHA key derived from our secret.</p>
+<pre><code class="language-java">@Service
+public class JwtService {
+
+    private final SecretKey key;
+    private final long expirationMs;
+
+    public JwtService(@Value("${app.jwt.secret}") String secret,
+                      @Value("${app.jwt.expiration-ms}") long expirationMs) {
+        this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+        this.expirationMs = expirationMs;
+    }
+
+    public String generateToken(String email) {
+        Date now = new Date();
+        return Jwts.builder()
+                .subject(email)
+                .issuedAt(now)
+                .expiration(new Date(now.getTime() + expirationMs))
+                .signWith(key)
+                .compact();
+    }
+
+    /** Returns the email inside a valid token, or throws JwtException. */
+    public String extractEmail(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+    }
+}</code></pre>
+          <p><code>parseSignedClaims</code> checks the signature and the expiry for you. A tampered or expired token throws a <code>JwtException</code>, which the filter below treats as "not logged in".</p>
+
+          <h2 id="filter">The JWT filter</h2>
+          <p>This filter runs once per request. If it finds a valid bearer token, it loads the user and puts them into the <code>SecurityContext</code>. If not, it does nothing and lets Spring Security reject the request later.</p>
+<pre><code class="language-java">@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final UserDetailsService userDetailsService;
+
+    public JwtAuthFilter(JwtService jwtService, UserDetailsService userDetailsService) {
+        this.jwtService = jwtService;
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain) throws ServletException, IOException {
+        String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (header == null || !header.startsWith("Bearer ")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        try {
+            String email = jwtService.extractEmail(header.substring(7));
+            if (SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails user = userDetailsService.loadUserByUsername(email);
+                var auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        } catch (JwtException | UsernameNotFoundException e) {
+            // Invalid token: continue as an anonymous request
+        }
+
+        chain.doFilter(request, response);
+    }
+}</code></pre>
+
+          <h2 id="security-config">Security configuration</h2>
+          <p>We disable CSRF (there are no cookies to protect), make the API stateless, open the auth endpoints and require authentication everywhere else.</p>
+<pre><code class="language-java">@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthFilter jwtAuthFilter) throws Exception {
+        return http
+                .csrf(csrf -&gt; csrf.disable())
+                .sessionManagement(s -&gt; s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -&gt; auth
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .anyRequest().authenticated())
+                .exceptionHandling(e -&gt; e.authenticationEntryPoint(
+                        new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    @Bean
+    UserDetailsService userDetailsService(UserRepository users) {
+        return email -&gt; users.findByEmail(email)
+                .map(u -&gt; org.springframework.security.core.userdetails.User
+                        .withUsername(u.getEmail())
+                        .password(u.getPassword())
+                        .disabled(!u.isEnabled())
+                        .roles("USER")
+                        .build())
+                .orElseThrow(() -&gt; new UsernameNotFoundException(email));
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+}</code></pre>
+          <p>Because the <code>UserDetailsService</code> reports unverified users as disabled, Spring Security refuses to log them in with no extra code from us.</p>
+
+          <h2 id="endpoints">Auth endpoints</h2>
+          <p>The service holds the business rules. Registration saves a disabled user and sends the code. Verification enables the account and clears the code so it cannot be reused.</p>
+<pre><code class="language-java">@Service
+public class AuthService {
+
+    private final UserRepository users;
+    private final PasswordEncoder passwordEncoder;
+    private final OtpService otpService;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
+
+    // constructor omitted
+
+    @Transactional
+    public void register(String email, String password) {
+        if (users.findByEmail(email).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already registered");
+        }
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(password));
+        otpService.issueOtp(user);
+        users.save(user);
+    }
+
+    @Transactional
+    public void verify(String email, String otp) {
+        User user = users.findByEmail(email)
+                .filter(u -&gt; otpService.isValid(u, otp))
+                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid or expired code"));
+        user.setEnabled(true);
+        user.setOtpHash(null);
+        user.setOtpExpiresAt(null);
+    }
+
+    public String login(String email, String password) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+        return jwtService.generateToken(email);
+    }
+}</code></pre>
+          <p>The controller stays thin and validates input with records:</p>
+<pre><code class="language-java">public record RegisterRequest(@Email @NotBlank String email, @Size(min = 8) String password) {}
+public record VerifyRequest(@Email @NotBlank String email, @Pattern(regexp = "\\d{6}") String otp) {}
+public record LoginRequest(@Email @NotBlank String email, @NotBlank String password) {}
+public record TokenResponse(String token) {}
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @PostMapping("/register")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void register(@Valid @RequestBody RegisterRequest req) {
+        authService.register(req.email(), req.password());
+    }
+
+    @PostMapping("/verify")
+    public void verify(@Valid @RequestBody VerifyRequest req) {
+        authService.verify(req.email(), req.otp());
+    }
+
+    @PostMapping("/login")
+    public TokenResponse login(@Valid @RequestBody LoginRequest req) {
+        return new TokenResponse(authService.login(req.email(), req.password()));
+    }
+}
+
+@RestControllerAdvice
+class AuthErrors {
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map&lt;String, String&gt; onAuthError(AuthenticationException e) {
+        return Map.of("error", "Invalid credentials or unverified account");
+    }
+}</code></pre>
+
+          <h2 id="testing">Testing with curl</h2>
+<pre><code class="language-bash"># 1. Register, then check your inbox for the code
+curl -i -X POST localhost:8080/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"jane@example.com","password":"s3cure-pass"}'
+
+# 2. Verify the email
+curl -i -X POST localhost:8080/api/auth/verify \
+  -H "Content-Type: application/json" \
+  -d '{"email":"jane@example.com","otp":"482913"}'
+
+# 3. Log in and copy the token
+curl -s -X POST localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"jane@example.com","password":"s3cure-pass"}'
+
+# 4. Call a protected endpoint
+curl -i localhost:8080/api/expenses -H "Authorization: Bearer &lt;token&gt;"</code></pre>
+          <p>Without a token, step 4 returns <code>401 Unauthorized</code>. With a valid token it reaches your controller.</p>
+
+          <h2 id="checklist">Production checklist</h2>
+          <ul>
+            <li><strong>Rate limit</strong> the register, verify and login endpoints, and lock an OTP after around 5 wrong attempts. A 6 digit code can be brute forced if you allow unlimited guesses.</li>
+            <li><strong>Keep access tokens short lived</strong> (15 to 60 minutes) and add refresh tokens if users need to stay logged in longer.</li>
+            <li><strong>Serve everything over HTTPS</strong>. A bearer token is as good as a password to anyone who intercepts it.</li>
+            <li><strong>Send email asynchronously</strong> (for example with <code>@Async</code> or a queue) so a slow SMTP server does not slow down registration.</li>
+            <li><strong>Never log tokens or OTP codes</strong>, and store the JWT secret in your platform's secret manager.</li>
+            <li><strong>Add a resend endpoint</strong> that issues a fresh code and invalidates the old one.</li>
+          </ul>
+          <p>With these pieces in place you have a secure, stateless authentication layer that works the same for a React frontend, a mobile app or another backend service.</p>
+
+          <aside class="card card-static article-cta">
+            <h2>Need this in your product?</h2>
+            <p>I build secure Spring Boot backends for startups and businesses, from authentication to payments and AI features. Tell me about your project and I will get back to you with next steps.</p>
+            <a class="btn btn-primary" href="/#contact">Start a project <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+          </aside>
+
+          <div class="author">
+            <span class="brand-mark" aria-hidden="true">AN</span>
+            <div>
+              <strong>Anurag Nepal</strong>
+              <span>Freelance Java &amp; Spring Boot developer building secure, scalable backends.</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="card card-static toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">On this page</h2>
+          <ol>
+            <li><a href="#overview">What we are building</a></li>
+            <li><a href="#setup">Project setup</a></li>
+            <li><a href="#user-entity">The user entity</a></li>
+            <li><a href="#otp">Generating the OTP</a></li>
+            <li><a href="#jwt">Creating JWTs</a></li>
+            <li><a href="#filter">The JWT filter</a></li>
+            <li><a href="#security-config">Security configuration</a></li>
+            <li><a href="#endpoints">Auth endpoints</a></li>
+            <li><a href="#testing">Testing with curl</a></li>
+            <li><a href="#checklist">Production checklist</a></li>
+          </ol>
+        </nav>
+      </div>
+    </article>
+
+    <section class="section section-alt" aria-labelledby="more-title">
+      <div class="container">
+        <header class="section-head section-head-row">
+          <div>
+            <span class="eyebrow">Keep reading</span>
+            <h2 id="more-title">More from the blog</h2>
+          </div>
+          <a class="link-arrow" href="/blog/">All articles <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+        </header>
+        <div class="posts-grid">
+          <article class="card post-card">
+            <div class="post-meta">
+              <span class="tag">Spring AI</span>
+              <time datetime="2026-09-30">Sep 30, 2026</time>
+              <span>6 min read</span>
+            </div>
+            <h3><a href="/blog/spring-ai-ollama-local-llm-docker/">Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker</a></h3>
+            <p>Add AI features to a Spring Boot app without paying per token: run a model locally with Ollama and call it through Spring AI.</p>
+            <span class="link-arrow">Read article <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Anurag Nepal. Freelance Java &amp; Spring Boot developer.</p>
+      <ul class="footer-links">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+        <li><a href="https://github.com/Anurag-Nepal" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/anurag-nepal/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#top">Back to top</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

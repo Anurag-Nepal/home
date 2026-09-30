@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Local LLM in Spring Boot with Spring AI and Ollama | Anurag Nepal</title>
+  <meta name="description" content="Learn how to run an LLM locally with Ollama in Docker and call it from Spring Boot using Spring AI ChatClient, including structured output and Docker Compose.">
+  <meta name="author" content="Anurag Nepal">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="canonical" href="https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/">
+  <meta name="theme-color" content="#07080c">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Anurag Nepal">
+  <meta property="og:url" content="https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/">
+  <meta property="og:title" content="Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker">
+  <meta property="og:description" content="Add AI features to a Spring Boot app without paying per token: run a model locally with Ollama and call it through Spring AI.">
+  <meta property="og:image" content="https://anuragnepal.com.np/assets/og/spring-ai-ollama-local-llm-docker.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:published_time" content="2026-09-30T00:00:00+05:45">
+  <meta property="article:modified_time" content="2026-09-30T00:00:00+05:45">
+  <meta property="article:author" content="https://anuragnepal.com.np/">
+  <meta property="article:section" content="Spring AI">
+  <meta property="article:tag" content="Spring AI">
+  <meta property="article:tag" content="Ollama">
+  <meta property="article:tag" content="Docker">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker">
+  <meta name="twitter:description" content="Run a model locally with Ollama and call it from Spring Boot through Spring AI.">
+  <meta name="twitter:image" content="https://anuragnepal.com.np/assets/og/spring-ai-ollama-local-llm-docker.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Anurag Nepal Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/#article",
+        "headline": "Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker",
+        "description": "Run an LLM locally with Ollama in Docker and call it from Spring Boot using Spring AI ChatClient, including structured output and Docker Compose.",
+        "image": "https://anuragnepal.com.np/assets/og/spring-ai-ollama-local-llm-docker.png",
+        "datePublished": "2026-09-30T00:00:00+05:45",
+        "dateModified": "2026-09-30T00:00:00+05:45",
+        "author": { "@type": "Person", "@id": "https://anuragnepal.com.np/#person", "name": "Anurag Nepal", "url": "https://anuragnepal.com.np/" },
+        "publisher": { "@id": "https://anuragnepal.com.np/#person" },
+        "mainEntityOfPage": "https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/",
+        "keywords": ["Spring AI", "Ollama", "Spring Boot", "local LLM", "Docker", "Llama"],
+        "articleSection": "Spring AI",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://anuragnepal.com.np/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://anuragnepal.com.np/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="Anurag Nepal, home">
+        <span class="brand-mark" aria-hidden="true">AN</span>
+        <span>Anurag Nepal</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li class="nav-cta"><a class="btn btn-sm" href="/#contact">Hire me</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article>
+      <header class="page-hero">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-grid"></div>
+          <div class="orb orb-1"></div>
+        </div>
+        <div class="container article-head">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><span aria-current="page">Spring AI with Ollama</span></li>
+            </ol>
+          </nav>
+          <h1>Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker</h1>
+          <p class="article-lede">Add AI features to a Spring Boot app without paying per token or sending data to a third party. We will run a model locally with Ollama and call it through Spring AI.</p>
+          <div class="post-meta">
+            <span class="tag">Spring AI</span>
+            <span>By Anurag Nepal</span>
+            <time datetime="2026-09-30">Sep 30, 2026</time>
+            <span>6 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="container article-layout">
+        <div class="prose">
+          <p>When I built <a href="https://github.com/Anurag-Nepal/DishGenie-AI-receipe-Generator" target="_blank" rel="noopener">DishGenie</a>, an API that turns a list of ingredients into a recipe, I wanted the whole thing to run on my own machine: no API keys, no usage bills, and no user data leaving the server. Spring AI and Ollama make that surprisingly simple. This guide walks through the same setup with current versions.</p>
+
+          <h2 id="why-local">Why run the model locally</h2>
+          <ul>
+            <li><strong>Privacy.</strong> Prompts and responses never leave your infrastructure, which matters for health, finance and internal company data.</li>
+            <li><strong>Predictable cost.</strong> You pay for hardware, not per token, so heavy usage does not surprise you at the end of the month.</li>
+            <li><strong>Offline development.</strong> Your team can build and test AI features without shared API keys or rate limits.</li>
+            <li><strong>Easy to swap.</strong> Spring AI uses the same <code>ChatClient</code> API for Ollama, OpenAI, Anthropic and others, so moving to a hosted model later is mostly a config change.</li>
+          </ul>
+
+          <h2 id="ollama">Start Ollama in Docker</h2>
+          <p>Ollama serves open models behind a simple HTTP API on port 11434. Run it in a container with a named volume so downloaded models survive restarts:</p>
+<pre><code class="language-bash">docker run -d --name ollama \
+  -p 11434:11434 \
+  -v ollama:/root/.ollama \
+  ollama/ollama
+
+# Download a model (a few GB, only needed once)
+docker exec -it ollama ollama pull llama3.2
+
+# Quick check that it answers
+docker exec -it ollama ollama run llama3.2 "Say hello in one sentence"</code></pre>
+          <p>DishGenie originally used Llama 2. Newer models like <code>llama3.2</code> are faster and follow instructions better, but any model from the Ollama library works with the code below.</p>
+
+          <h2 id="setup">Add Spring AI to your project</h2>
+          <p>Import the Spring AI BOM so all Spring AI modules share one version, then add the Ollama starter:</p>
+<pre><code class="language-xml">&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-ai-bom&lt;/artifactId&gt;
+            &lt;version&gt;1.0.0&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+            &lt;scope&gt;import&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.ai&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-ai-starter-model-ollama&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+          <p>Use the latest Spring AI release that matches your Spring Boot version. The code in this post works with 1.0 and later.</p>
+
+          <h2 id="config">Configure the model</h2>
+<pre><code class="language-yaml">spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      init:
+        pull-model-strategy: when_missing   # download the model on startup if needed
+      chat:
+        options:
+          model: llama3.2
+          temperature: 0.7</code></pre>
+          <p>A lower temperature gives more consistent answers. For structured output like the recipe below, values between 0.2 and 0.7 work well.</p>
+
+          <h2 id="chatclient">Call the model with ChatClient</h2>
+          <p>Spring Boot auto-configures a <code>ChatClient.Builder</code>. Build a client once with a default system prompt, then reuse it:</p>
+<pre><code class="language-java">@Service
+public class RecipeService {
+
+    private final ChatClient chatClient;
+
+    public RecipeService(ChatClient.Builder builder) {
+        this.chatClient = builder
+                .defaultSystem("""
+                        You are a helpful chef. Suggest recipes that only use the
+                        ingredients given plus common pantry staples like salt, oil and water.
+                        """)
+                .build();
+    }
+
+    public String suggest(List&lt;String&gt; ingredients) {
+        return chatClient.prompt()
+                .user(u -&gt; u.text("Suggest one recipe using: {ingredients}")
+                        .param("ingredients", String.join(", ", ingredients)))
+                .call()
+                .content();
+    }
+}</code></pre>
+          <p>Using a template parameter instead of string concatenation keeps prompts readable and makes it clear which part of the prompt came from the user.</p>
+
+          <h2 id="structured">Get structured output</h2>
+          <p>Free text is hard to use in an API. Spring AI can map the model's answer straight into a Java record. It adds format instructions to the prompt and parses the JSON response for you:</p>
+<pre><code class="language-java">public record Recipe(
+        String title,
+        List&lt;String&gt; ingredients,
+        List&lt;String&gt; steps,
+        int totalMinutes) {}
+
+public Recipe generate(List&lt;String&gt; ingredients) {
+    return chatClient.prompt()
+            .user(u -&gt; u.text("Create one recipe using: {ingredients}")
+                    .param("ingredients", String.join(", ", ingredients)))
+            .call()
+            .entity(Recipe.class);
+}</code></pre>
+          <p>Smaller local models occasionally return invalid JSON. Catch the exception and retry once, or fall back to a friendly error, rather than letting a 500 reach your users.</p>
+
+          <h2 id="endpoint">Expose a REST endpoint</h2>
+<pre><code class="language-java">public record RecipeRequest(@NotEmpty @Size(max = 20) List&lt;@NotBlank String&gt; ingredients) {}
+
+@RestController
+@RequestMapping("/api/recipes")
+public class RecipeController {
+
+    private final RecipeService recipeService;
+
+    public RecipeController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
+
+    @PostMapping
+    public Recipe create(@Valid @RequestBody RecipeRequest request) {
+        return recipeService.generate(request.ingredients());
+    }
+}</code></pre>
+          <p>Try it:</p>
+<pre><code class="language-bash">curl -s -X POST localhost:8080/api/recipes \
+  -H "Content-Type: application/json" \
+  -d '{"ingredients":["rice","eggs","spring onion","soy sauce"]}'</code></pre>
+<pre><code class="language-json">{
+  "title": "Quick Egg Fried Rice",
+  "ingredients": ["2 cups cooked rice", "2 eggs", "2 spring onions", "1 tbsp soy sauce", "1 tbsp oil"],
+  "steps": ["Heat the oil in a wok...", "Scramble the eggs...", "Add the rice and soy sauce..."],
+  "totalMinutes": 15
+}</code></pre>
+
+          <h2 id="compose">Run everything with Docker Compose</h2>
+          <p>For a team or a server, put the app and Ollama in one Compose file. Inside the Compose network the app reaches Ollama by its service name:</p>
+<pre><code class="language-yaml">services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_AI_OLLAMA_BASE_URL: http://ollama:11434
+    depends_on:
+      - ollama
+
+volumes:
+  ollama:</code></pre>
+          <p>Run <code>docker compose up -d</code>. With <code>pull-model-strategy: when_missing</code>, the app downloads the model on its first start.</p>
+
+          <h2 id="tips">Tips for production</h2>
+          <ul>
+            <li><strong>Size the hardware for the model.</strong> Small models (1B to 3B parameters) run on a CPU. For 7B and larger, a GPU makes responses many times faster. Ollama supports NVIDIA GPUs in Docker with <code>--gpus=all</code>.</li>
+            <li><strong>Expect a slow first request.</strong> The model loads into memory on first use, so increase your HTTP client timeouts and consider a warm-up call at startup.</li>
+            <li><strong>Stream long answers.</strong> Replace <code>.call()</code> with <code>.stream().content()</code> to send tokens to the client as they are generated.</li>
+            <li><strong>Treat user input as untrusted.</strong> Validate lengths, keep instructions in the system prompt, and never let model output run code or queries directly.</li>
+            <li><strong>Keep Ollama private.</strong> Do not expose port 11434 to the internet. Only your app should be able to reach it.</li>
+          </ul>
+          <p>That is all it takes to ship a private, self-hosted AI feature with the Spring tools you already know.</p>
+
+          <aside class="card card-static article-cta">
+            <h2>Want AI features in your product?</h2>
+            <p>I help businesses add LLM powered features to their Spring Boot backends, with hosted or self-hosted models. Tell me what you have in mind and I will get back to you with next steps.</p>
+            <a class="btn btn-primary" href="/#contact">Start a project <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+          </aside>
+
+          <div class="author">
+            <span class="brand-mark" aria-hidden="true">AN</span>
+            <div>
+              <strong>Anurag Nepal</strong>
+              <span>Freelance Java &amp; Spring Boot developer building secure, scalable backends.</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="card card-static toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">On this page</h2>
+          <ol>
+            <li><a href="#why-local">Why run it locally</a></li>
+            <li><a href="#ollama">Start Ollama in Docker</a></li>
+            <li><a href="#setup">Add Spring AI</a></li>
+            <li><a href="#config">Configure the model</a></li>
+            <li><a href="#chatclient">Call it with ChatClient</a></li>
+            <li><a href="#structured">Structured output</a></li>
+            <li><a href="#endpoint">REST endpoint</a></li>
+            <li><a href="#compose">Docker Compose</a></li>
+            <li><a href="#tips">Tips for production</a></li>
+          </ol>
+        </nav>
+      </div>
+    </article>
+
+    <section class="section section-alt" aria-labelledby="more-title">
+      <div class="container">
+        <header class="section-head section-head-row">
+          <div>
+            <span class="eyebrow">Keep reading</span>
+            <h2 id="more-title">More from the blog</h2>
+          </div>
+          <a class="link-arrow" href="/blog/">All articles <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+        </header>
+        <div class="posts-grid">
+          <article class="card post-card">
+            <div class="post-meta">
+              <span class="tag">Spring Security</span>
+              <time datetime="2026-09-30">Sep 30, 2026</time>
+              <span>8 min read</span>
+            </div>
+            <h3><a href="/blog/spring-boot-jwt-authentication-email-otp/">Spring Boot JWT Authentication with Email OTP Verification</a></h3>
+            <p>Build sign up, email verification and stateless login for a Spring Boot REST API, step by step, with Spring Security 6 and jjwt.</p>
+            <span class="link-arrow">Read article <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Anurag Nepal. Freelance Java &amp; Spring Boot developer.</p>
+      <ul class="footer-links">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+        <li><a href="https://github.com/Anurag-Nepal" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/anurag-nepal/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#top">Back to top</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

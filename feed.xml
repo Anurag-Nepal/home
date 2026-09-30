@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anurag Nepal Blog</title>
+    <link>https://anuragnepal.com.np/blog/</link>
+    <atom:link href="https://anuragnepal.com.np/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical Spring Boot and Java backend guides from real projects.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 30 Sep 2026 00:00:00 +0545</lastBuildDate>
+    <item>
+      <title>Run a Local LLM in Spring Boot with Spring AI, Ollama and Docker</title>
+      <link>https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/</link>
+      <guid>https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0545</pubDate>
+      <description>Add AI features to a Spring Boot app without paying per token: run a model locally with Ollama and call it through Spring AI.</description>
+    </item>
+    <item>
+      <title>Spring Boot JWT Authentication with Email OTP Verification</title>
+      <link>https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/</link>
+      <guid>https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/</guid>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0545</pubDate>
+      <description>Build sign up, email verification and stateless login for a Spring Boot REST API, step by step, with Spring Security 6 and jjwt.</description>
+    </item>
+  </channel>
+</rss>

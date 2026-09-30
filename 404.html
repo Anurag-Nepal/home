@@ -3,43 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found · Anurag Nepal</title>
+  <title>Page not found | Anurag Nepal</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#07080c">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@700&display=swap">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; }
-    body {
-      min-height: 100svh; display: grid; place-items: center; padding: 24px 16px;
-      font-family: "Inter", system-ui, sans-serif; color: #eceef3; background: #07080c;
-      background-image: radial-gradient(600px circle at 70% 20%, rgba(107,140,255,.22), transparent 60%);
-      text-align: center; -webkit-font-smoothing: antialiased;
-    }
-    code { font-family: "JetBrains Mono", ui-monospace, monospace; color: #6b8cff; font-size: .9rem; }
-    h1 {
-      margin: 12px 0 10px; font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(5rem, 22vw, 9rem); line-height: 1; letter-spacing: -.05em;
-      background: linear-gradient(120deg, #6b8cff, #3dd5f3); -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    p { color: #b3b9c6; max-width: 36ch; margin: 0 auto 28px; }
-    a {
-      display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 999px;
-      background: linear-gradient(120deg, #6b8cff, #3dd5f3); color: #081024; font-weight: 600; text-decoration: none;
-      transition: transform .3s cubic-bezier(.22,1,.36,1);
-    }
-    a:hover { transform: translateY(-2px); }
-    a:focus-visible { outline: 2px solid #6b8cff; outline-offset: 3px; }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
-  <main>
-    <code>HTTP 404 · NotFoundException</code>
-    <h1>404</h1>
-    <p>The page you’re looking for doesn’t exist or has been moved.</p>
-    <a href="/">Back to home</a>
+  <main class="not-found">
+    <div>
+      <code>HTTP 404: NotFoundException</code>
+      <h1 class="gradient-text">404</h1>
+      <p>The page you are looking for does not exist or has been moved.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn" href="/blog/">Read the blog</a>
+      </div>
+    </div>
   </main>
 </body>
 </html>
