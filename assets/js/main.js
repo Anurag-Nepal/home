@@ -140,7 +140,16 @@
         setStatus(SUCCESS, 'ok');
       })
       .catch(function () {
-        setStatus('Something went wrong. Please email me directly instead.', 'error');
+        // Keep the inquiry: offer the same message as a prefilled email
+        setStatus('The form could not be sent right now. ', 'error');
+        var mail = document.querySelector('a[href^="mailto:"]');
+        if (!mail) return;
+        var link = document.createElement('a');
+        link.href = mail.href.split('?')[0] +
+          '?subject=' + encodeURIComponent('Project inquiry from ' + data.name) +
+          '&body=' + encodeURIComponent(data.message + '\n\n' + data.name + '\n' + data.email);
+        link.textContent = 'Send it by email instead';
+        status.appendChild(link);
       })
       .finally(function () {
         setLoading(false);

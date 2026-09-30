@@ -864,6 +864,7 @@ ul[class], ol[class] { list-style: none; }
 .form-status { min-height: 1.5em; font-size: 0.925rem; }
 .form-status.is-ok { color: var(--success); }
 .form-status.is-error { color: var(--danger); }
+.form-status a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 
 .spinner {
   display: none;
