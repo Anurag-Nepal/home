@@ -98,14 +98,19 @@
         "@type": "FAQPage",
         "@id": "https://anuragnepal.com.np/#faq",
         "mainEntity": [
-          { "@type": "Question", "name": "What kind of projects do you take on?", "acceptedAnswer": { "@type": "Answer", "text": "Backend work in Java and Spring Boot: new REST APIs, features for an existing Spring app, authentication and payments, microservices with Kafka, and AI features with Spring AI. I focus on the server side and work alongside your frontend developer or team." } },
-          { "@type": "Question", "name": "Do you work with clients outside Nepal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I work remotely with clients worldwide and communicate in English over email, chat and video calls. We agree on a regular time for calls that suits your time zone." } },
-          { "@type": "Question", "name": "How much does a project cost?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the scope. After a short discovery call I send a written quote with a fixed price for each milestone, so you know the cost before any work starts. For ongoing work I can also bill hourly." } },
-          { "@type": "Question", "name": "How long does a project take?", "acceptedAnswer": { "@type": "Answer", "text": "Your quote includes a timeline for each milestone. Work is delivered in small steps with working demos along the way, so you see progress every week instead of waiting until the end." } },
-          { "@type": "Question", "name": "Can you work on an existing codebase?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I start by running your project locally and reading through the code, then make small, tested changes so nothing that already works breaks." } },
-          { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do. The code lives in your repository, and you own all of it once the work is paid for. You also get documentation so any developer can pick it up later." } },
+          { "@type": "Question", "name": "How much does a project cost?", "acceptedAnswer": { "@type": "Answer", "text": "Every project gets a fixed quote based on its scope, not a vague estimate. After a short call I send a written plan that splits the work into milestones, each with its own price, so you know the full cost before anything starts." } },
+          { "@type": "Question", "name": "How do payments work?", "acceptedAnswer": { "@type": "Answer", "text": "You pay per milestone, as agreed in the quote. Each milestone ends with working software you can try yourself, so you only pay for progress you have already seen." } },
+          { "@type": "Question", "name": "Do you also work hourly?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, for ongoing work such as maintenance, small changes or joining your team long term. For a clearly defined project, a fixed quote per milestone is usually simpler for both of us." } },
+          { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Send a message through the contact form or email me with what you are building and where you need help. I reply with a few questions and a time for a short call, then send a written plan and quote." } },
+          { "@type": "Question", "name": "How long does a project take?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on the scope, and you will know before we start: every milestone in the quote has its own timeline. Work ships in small steps with working demos, so you see progress along the way instead of waiting for one big reveal." } },
+          { "@type": "Question", "name": "How will I know how things are going?", "acceptedAnswer": { "@type": "Answer", "text": "You get regular written updates, access to the code as it is written and a working demo at the end of every milestone. If a decision is needed or something changes, you hear about it right away, not at the deadline." } },
           { "@type": "Question", "name": "What happens after launch?", "acceptedAnswer": { "@type": "Answer", "text": "I stay available for bug fixes, small changes and the next feature. Many projects continue as ongoing work once the first version is live." } },
-          { "@type": "Question", "name": "How do we get started?", "acceptedAnswer": { "@type": "Answer", "text": "Send a message through the contact form or email me with what you are building and where you need help. I will reply with a few questions and a time for a short call." } }
+          { "@type": "Question", "name": "Do you work with clients outside Nepal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I work remotely with clients worldwide and communicate in English over email, chat and video calls. We agree on a regular time for calls that suits your time zone." } },
+          { "@type": "Question", "name": "Can you work on an existing codebase?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I start by running your project locally and reading through the code, then make small, tested changes so nothing that already works breaks." } },
+          { "@type": "Question", "name": "Who owns the code?", "acceptedAnswer": { "@type": "Answer", "text": "You do. The code lives in your repository from the first commit, and you own all of it once the work is paid for." } },
+          { "@type": "Question", "name": "What kind of projects do you take on?", "acceptedAnswer": { "@type": "Answer", "text": "Backend work in Java and Spring Boot: new REST APIs, features for an existing Spring app, authentication and payments, microservices with Kafka, and AI features with Spring AI. I focus on the server side and work alongside your frontend developer or team." } },
+          { "@type": "Question", "name": "Which technologies do you use?", "acceptedAnswer": { "@type": "Answer", "text": "Java and Spring Boot at the core, with Spring Security, Spring Data JPA and Hibernate, PostgreSQL or MySQL for data, Kafka and Redis for messaging and caching, Docker for deployment and Spring AI for LLM features." } },
+          { "@type": "Question", "name": "Do you write tests and documentation?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The important paths are covered by automated tests, your frontend team gets API documentation to build against, and the repository includes a README that explains how to run and deploy it." } }
         ]
       },
       {
@@ -402,56 +407,94 @@
       </div>
     </section>
 
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <div class="faq-aside">
-          <header class="section-head reveal">
-            <span class="eyebrow">FAQ</span>
-            <h2 id="faq-title">Questions clients usually ask.</h2>
-            <p class="section-sub">Straight answers about scope, pricing, timelines and how we would work together.</p>
-          </header>
-          <div class="card card-static faq-cta reveal">
-            <h3>Still have a question?</h3>
-            <p>Email me and I will reply personally, usually with a few questions of my own.</p>
-            <div class="faq-cta-actions">
-              <a class="btn btn-primary btn-sm" href="mailto:anuragnepal2062@gmail.com">Email me <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
-              <a class="link-arrow" href="/hire-spring-boot-developer/">More about hiring me <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
-            </div>
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-head faq-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-title">Frequently asked questions.</h2>
+          <p class="section-sub">Everything you need to know before we start working together.</p>
+        </header>
+        <div class="faq-tabs reveal" role="tablist" aria-label="FAQ topics" hidden>
+          <button type="button" role="tab" id="faq-tab-pricing" aria-controls="faq-panel-pricing" aria-selected="true">Pricing <span class="faq-count">3</span></button>
+          <button type="button" role="tab" id="faq-tab-process" aria-controls="faq-panel-process" aria-selected="false" tabindex="-1">Process <span class="faq-count">4</span></button>
+          <button type="button" role="tab" id="faq-tab-working" aria-controls="faq-panel-working" aria-selected="false" tabindex="-1">Working together <span class="faq-count">3</span></button>
+          <button type="button" role="tab" id="faq-tab-tech" aria-controls="faq-panel-tech" aria-selected="false" tabindex="-1">Tech <span class="faq-count">3</span></button>
+        </div>
+        <div class="faq-panels reveal">
+          <div class="faq-panel" role="tabpanel" id="faq-panel-pricing" aria-labelledby="faq-tab-pricing">
+            <h3 class="faq-panel-title">Pricing</h3>
+            <details class="faq-item" name="faq-pricing" open>
+              <summary><span class="faq-q">How much does a project cost?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Every project gets a fixed quote based on its scope, not a vague estimate. After a short call I send a written plan that splits the work into milestones, each with its own price, so you know the full cost before anything starts.</p></div>
+            </details>
+            <details class="faq-item" name="faq-pricing">
+              <summary><span class="faq-q">How do payments work?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>You pay per milestone, as agreed in the quote. Each milestone ends with working software you can try yourself, so you only pay for progress you have already seen.</p></div>
+            </details>
+            <details class="faq-item" name="faq-pricing">
+              <summary><span class="faq-q">Do you also work hourly?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes, for ongoing work such as maintenance, small changes or joining your team long term. For a clearly defined project, a fixed quote per milestone is usually simpler for both of us.</p></div>
+            </details>
+          </div>
+          <div class="faq-panel" role="tabpanel" id="faq-panel-process" aria-labelledby="faq-tab-process">
+            <h3 class="faq-panel-title">Process</h3>
+            <details class="faq-item" name="faq-process" open>
+              <summary><span class="faq-q">How do we get started?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Send a message through the contact form or email me with what you are building and where you need help. I reply with a few questions and a time for a short call, then send a written plan and quote.</p></div>
+            </details>
+            <details class="faq-item" name="faq-process">
+              <summary><span class="faq-q">How long does a project take?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>It depends on the scope, and you will know before we start: every milestone in the quote has its own timeline. Work ships in small steps with working demos, so you see progress along the way instead of waiting for one big reveal.</p></div>
+            </details>
+            <details class="faq-item" name="faq-process">
+              <summary><span class="faq-q">How will I know how things are going?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>You get regular written updates, access to the code as it is written and a working demo at the end of every milestone. If a decision is needed or something changes, you hear about it right away, not at the deadline.</p></div>
+            </details>
+            <details class="faq-item" name="faq-process">
+              <summary><span class="faq-q">What happens after launch?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>I stay available for bug fixes, small changes and the next feature. Many projects continue as ongoing work once the first version is live.</p></div>
+            </details>
+          </div>
+          <div class="faq-panel" role="tabpanel" id="faq-panel-working" aria-labelledby="faq-tab-working">
+            <h3 class="faq-panel-title">Working together</h3>
+            <details class="faq-item" name="faq-working" open>
+              <summary><span class="faq-q">Do you work with clients outside Nepal?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. I work remotely with clients worldwide and communicate in English over email, chat and video calls. We agree on a regular time for calls that suits your time zone.</p></div>
+            </details>
+            <details class="faq-item" name="faq-working">
+              <summary><span class="faq-q">Can you work on an existing codebase?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. I start by running your project locally and reading through the code, then make small, tested changes so nothing that already works breaks.</p></div>
+            </details>
+            <details class="faq-item" name="faq-working">
+              <summary><span class="faq-q">Who owns the code?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>You do. The code lives in your repository from the first commit, and you own all of it once the work is paid for.</p></div>
+            </details>
+          </div>
+          <div class="faq-panel" role="tabpanel" id="faq-panel-tech" aria-labelledby="faq-tab-tech">
+            <h3 class="faq-panel-title">Tech</h3>
+            <details class="faq-item" name="faq-tech" open>
+              <summary><span class="faq-q">What kind of projects do you take on?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Backend work in Java and Spring Boot: new REST APIs, features for an existing Spring app, authentication and payments, microservices with Kafka, and AI features with Spring AI. I focus on the server side and work alongside your frontend developer or team.</p></div>
+            </details>
+            <details class="faq-item" name="faq-tech">
+              <summary><span class="faq-q">Which technologies do you use?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Java and Spring Boot at the core, with Spring Security, Spring Data JPA and Hibernate, PostgreSQL or MySQL for data, Kafka and Redis for messaging and caching, Docker for deployment and Spring AI for LLM features.</p></div>
+            </details>
+            <details class="faq-item" name="faq-tech">
+              <summary><span class="faq-q">Do you write tests and documentation?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. The important paths are covered by automated tests, your frontend team gets API documentation to build against, and the repository includes a README that explains how to run and deploy it.</p></div>
+            </details>
           </div>
         </div>
-        <div class="faq-list reveal">
-          <details class="faq-item" open>
-            <summary><span class="faq-q">What kind of projects do you take on?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Backend work in Java and Spring Boot: new REST APIs, features for an existing Spring app, authentication and payments, microservices with Kafka, and AI features with Spring AI. I focus on the server side and work alongside your frontend developer or team.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Do you work with clients outside Nepal?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Yes. I work remotely with clients worldwide and communicate in English over email, chat and video calls. We agree on a regular time for calls that suits your time zone.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">How much does a project cost?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>It depends on the scope. After a short discovery call I send a written quote with a fixed price for each milestone, so you know the cost before any work starts. For ongoing work I can also bill hourly.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">How long does a project take?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Your quote includes a timeline for each milestone. Work is delivered in small steps with working demos along the way, so you see progress every week instead of waiting until the end.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Can you work on an existing codebase?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Yes. I start by running your project locally and reading through the code, then make small, tested changes so nothing that already works breaks.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Who owns the code?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>You do. The code lives in your repository, and you own all of it once the work is paid for. You also get documentation so any developer can pick it up later.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">What happens after launch?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>I stay available for bug fixes, small changes and the next feature. Many projects continue as ongoing work once the first version is live.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">How do we get started?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Send a message through the contact form or email me with what you are building and where you need help. I will reply with a few questions and a time for a short call.</p></div>
-          </details>
+        <div class="card card-static faq-cta reveal">
+          <div>
+            <h3>Still unsure?</h3>
+            <p>Tell me about your project and I will answer anything not covered here.</p>
+          </div>
+          <div class="faq-cta-actions">
+            <a class="btn btn-primary" href="mailto:anuragnepal2062@gmail.com">Email me <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+            <a class="btn" href="#contact">Start a project</a>
+          </div>
         </div>
       </div>
     </section>

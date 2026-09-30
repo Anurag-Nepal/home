@@ -73,11 +73,11 @@
         "@id": "https://anuragnepal.com.np/hire-spring-boot-developer/#faq",
         "mainEntity": [
           { "@type": "Question", "name": "Why hire a freelancer instead of an agency?", "acceptedAnswer": { "@type": "Answer", "text": "You work directly with the developer writing your code. There are no account managers or handoffs between teams, decisions are made quickly, and you avoid agency overhead." } },
+          { "@type": "Question", "name": "Can I see your code before hiring you?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every featured project is public on GitHub, so you can read the code, the structure and the commit history and judge the quality for yourself." } },
           { "@type": "Question", "name": "What do you need from me to get started?", "acceptedAnswer": { "@type": "Answer", "text": "A short description of your product, who uses it, what already exists and any deadlines. Designs, API docs or repository access help, but they are not needed for the first call." } },
-          { "@type": "Question", "name": "Can you join my existing team?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I can work inside your repository, follow your code style and review process, and join standups or planning calls when that is useful." } },
-          { "@type": "Question", "name": "Do you also build the frontend?", "acceptedAnswer": { "@type": "Answer", "text": "My focus is the backend. I build clean, documented APIs that your web or mobile developer can plug into, and I work closely with them so the integration goes smoothly." } },
           { "@type": "Question", "name": "Can you sign an NDA?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I am happy to sign an NDA before you share the details of your product." } },
-          { "@type": "Question", "name": "How do payments work?", "acceptedAnswer": { "@type": "Answer", "text": "You pay per milestone, as agreed in the written quote. Each milestone ends with working software you can review, so you always see what you are paying for." } }
+          { "@type": "Question", "name": "Can you join my existing team?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. I can work inside your repository, follow your code style and review process, and join standups or planning calls when that is useful." } },
+          { "@type": "Question", "name": "Do you also build the frontend?", "acceptedAnswer": { "@type": "Answer", "text": "My focus is the backend. I build clean, documented APIs that your web or mobile developer can plug into, and I work closely with them so the integration goes smoothly." } }
         ]
       }
     ]
@@ -277,48 +277,58 @@
       </div>
     </section>
 
-    <section class="section section-alt" id="faq" aria-labelledby="faq-title">
-      <div class="container faq-grid">
-        <div class="faq-aside">
-          <header class="section-head reveal">
-            <span class="eyebrow">Hiring FAQ</span>
-            <h2 id="faq-title">Before you hire.</h2>
-            <p class="section-sub">Common questions about working together. For pricing, timelines and code ownership, see the FAQ on the home page.</p>
-          </header>
-          <div class="card card-static faq-cta reveal">
-            <h3>Still have a question?</h3>
-            <p>Email me and I will reply personally, usually with a few questions of my own.</p>
-            <div class="faq-cta-actions">
-              <a class="btn btn-primary btn-sm" href="mailto:anuragnepal2062@gmail.com">Email me <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
-              <a class="link-arrow" href="/#faq">More answers <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
-            </div>
+    <section class="section section-alt faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-head faq-head reveal">
+          <span class="eyebrow">Hiring FAQ</span>
+          <h2 id="faq-title">Before you hire.</h2>
+          <p class="section-sub">Quick answers for founders and teams who are ready to start. Pricing, timelines and code ownership are covered in the full FAQ on the home page.</p>
+        </header>
+        <div class="faq-tabs reveal" role="tablist" aria-label="FAQ topics" hidden>
+          <button type="button" role="tab" id="faq-tab-before" aria-controls="faq-panel-before" aria-selected="true">Before you hire <span class="faq-count">4</span></button>
+          <button type="button" role="tab" id="faq-tab-team" aria-controls="faq-panel-team" aria-selected="false" tabindex="-1">Working together <span class="faq-count">2</span></button>
+        </div>
+        <div class="faq-panels reveal">
+          <div class="faq-panel" role="tabpanel" id="faq-panel-before" aria-labelledby="faq-tab-before">
+            <h3 class="faq-panel-title">Before you hire</h3>
+            <details class="faq-item" name="faq-before" open>
+              <summary><span class="faq-q">Why hire a freelancer instead of an agency?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>You work directly with the developer writing your code. There are no account managers or handoffs between teams, decisions are made quickly, and you avoid agency overhead.</p></div>
+            </details>
+            <details class="faq-item" name="faq-before">
+              <summary><span class="faq-q">Can I see your code before hiring you?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. Every featured project is public on GitHub, so you can read the code, the structure and the commit history and judge the quality for yourself.</p></div>
+            </details>
+            <details class="faq-item" name="faq-before">
+              <summary><span class="faq-q">What do you need from me to get started?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>A short description of your product, who uses it, what already exists and any deadlines. Designs, API docs or repository access help, but they are not needed for the first call.</p></div>
+            </details>
+            <details class="faq-item" name="faq-before">
+              <summary><span class="faq-q">Can you sign an NDA?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. I am happy to sign an NDA before you share the details of your product.</p></div>
+            </details>
+          </div>
+          <div class="faq-panel" role="tabpanel" id="faq-panel-team" aria-labelledby="faq-tab-team">
+            <h3 class="faq-panel-title">Working together</h3>
+            <details class="faq-item" name="faq-team" open>
+              <summary><span class="faq-q">Can you join my existing team?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>Yes. I can work inside your repository, follow your code style and review process, and join standups or planning calls when that is useful.</p></div>
+            </details>
+            <details class="faq-item" name="faq-team">
+              <summary><span class="faq-q">Do you also build the frontend?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+              <div class="faq-a"><p>My focus is the backend. I build clean, documented APIs that your web or mobile developer can plug into, and I work closely with them so the integration goes smoothly.</p></div>
+            </details>
           </div>
         </div>
-        <div class="faq-list reveal">
-          <details class="faq-item" open>
-            <summary><span class="faq-q">Why hire a freelancer instead of an agency?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>You work directly with the developer writing your code. There are no account managers or handoffs between teams, decisions are made quickly, and you avoid agency overhead.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">What do you need from me to get started?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>A short description of your product, who uses it, what already exists and any deadlines. Designs, API docs or repository access help, but they are not needed for the first call.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Can you join my existing team?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Yes. I can work inside your repository, follow your code style and review process, and join standups or planning calls when that is useful.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Do you also build the frontend?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>My focus is the backend. I build clean, documented APIs that your web or mobile developer can plug into, and I work closely with them so the integration goes smoothly.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">Can you sign an NDA?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>Yes. I am happy to sign an NDA before you share the details of your product.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary><span class="faq-q">How do payments work?</span><span class="faq-toggle" aria-hidden="true"></span></summary>
-            <div class="faq-a"><p>You pay per milestone, as agreed in the written quote. Each milestone ends with working software you can review, so you always see what you are paying for.</p></div>
-          </details>
+        <div class="card card-static faq-cta reveal">
+          <div>
+            <h3>Ready when you are.</h3>
+            <p>Send a few lines about your project and I will reply with next steps.</p>
+          </div>
+          <div class="faq-cta-actions">
+            <a class="btn btn-primary" href="mailto:anuragnepal2062@gmail.com">Email me <svg class="icon icon-arrow" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg></a>
+            <a class="btn" href="/#faq">Read the full FAQ</a>
+          </div>
         </div>
       </div>
     </section>

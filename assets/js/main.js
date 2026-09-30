@@ -62,6 +62,37 @@
     }, { passive: true });
   }
 
+  // FAQ tabs: without JS every topic stays visible as a plain list
+  document.querySelectorAll('.faq-tabs').forEach(function (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var select = function (tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+
+    tablist.addEventListener('click', function (e) {
+      var tab = e.target.closest('[role="tab"]');
+      if (tab) select(tab);
+    });
+    tablist.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      var next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (next === undefined) return;
+      e.preventDefault();
+      select(tabs[(next + tabs.length) % tabs.length], true);
+    });
+
+    tablist.hidden = false;
+    tablist.closest('.faq').classList.add('is-tabbed');
+    select(tabs[0]);
+  });
+
   // Contact form: submit over AJAX, fall back to a normal POST without JS
   var form = document.getElementById('contact-form');
   if (!form) return;
