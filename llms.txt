@@ -1,0 +1,34 @@
+# Anurag Nepal
+
+> Anurag Nepal is a freelance Java and Spring Boot backend developer based in Kathmandu, Nepal. He builds secure, scalable REST APIs, microservices and AI features for startups and businesses, and is available for freelance projects worldwide.
+
+- Website: https://anuragnepal.com.np/
+- Email: anuragnepal2062@gmail.com
+- GitHub: https://github.com/Anurag-Nepal
+- LinkedIn: https://www.linkedin.com/in/anurag-nepal/
+
+## Services
+
+- Backend and REST API development with Java and Spring Boot
+- Authentication and payment integration (Spring Security, JWT, email OTP, PayPal)
+- Microservices and event driven systems (Apache Kafka, Redis)
+- AI and LLM feature integration (Spring AI, Ollama, local LLMs)
+
+## Tech stack
+
+Java, Spring Boot, Spring Security, Spring Data JPA, Hibernate, Spring AI, Apache Kafka, Redis, MySQL, PostgreSQL, Docker, microservices, REST APIs, JWT authentication.
+
+## Projects
+
+- [PennyWise Nepal](https://github.com/Anurag-Nepal/PennyWiseNepal-RESTAPI): Finance tracker REST API with JWT authentication, email OTP verification, expense tracking and period over period reporting.
+- [ReadVault](https://github.com/Anurag-Nepal/ReadVault-OnlineBookStore): Online ebook store backend with JWT authentication, email verification, PayPal payments and automated ebook delivery.
+- [DishGenie](https://github.com/Anurag-Nepal/DishGenie-AI-receipe-Generator): AI recipe generator API built with Spring Boot and Spring AI, running Llama 2 locally in an Ollama Docker container.
+
+## Blog
+
+- [Spring Boot JWT Authentication with Email OTP](https://anuragnepal.com.np/blog/spring-boot-jwt-authentication-email-otp/): Step by step JWT authentication in Spring Boot 3 with Spring Security 6, jjwt and email OTP verification.
+- [Local LLM in Spring Boot with Spring AI and Ollama](https://anuragnepal.com.np/blog/spring-ai-ollama-local-llm-docker/): Run an LLM locally with Ollama in Docker and call it from Spring Boot using Spring AI ChatClient.
+
+## Hiring
+
+To hire Anurag Nepal for a Java or Spring Boot backend project, use the contact section at https://anuragnepal.com.np/#contact or email anuragnepal2062@gmail.com.
